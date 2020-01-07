@@ -1,1 +1,55 @@
 @import '~bootstrap/scss/bootstrap';
+
+h1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  align-items: center;
+  border: 10px solid $black;
+  display: grid;
+  height: 150px;
+  justify-content: center;
+}
+
+.one {
+  border-left: 0;
+  border-top: 0;
+}
+
+.two {
+  border-top: 0;
+}
+
+.three {
+  border-right: 0;
+  border-top: 0;
+}
+
+.four {
+  border-left: 0;
+}
+
+.six {
+  border-right: 0;
+}
+
+.seven {
+  border-bottom: 0;
+  border-left: 0;
+}
+
+.eight {
+  border-bottom: 0;
+}
+
+.nine {
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.box:hover {
+  background-color: #EBEBEB;
+}
