@@ -16,6 +16,7 @@ const signInSuccess = function (response) {
   $('#sign-in').hide()
   $('#change-passwords').show()
   $('#sign-out').show()
+  $('.box').show()
 }
 const signInFailure = function (error) {
   $('#message').text('Sign in failed!')
@@ -33,6 +34,7 @@ const signOutSuccess = function () {
   $('#sign-in').show()
   $('#change-passwords').hide()
   $('#sign-out').hide()
+  $('.box').hide()
 }
 module.exports = {
   signUpSuccess,

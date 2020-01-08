@@ -6,46 +6,55 @@ h1 {
   justify-content: center;
 }
 
+body {
+  background-color: #bbf2eb;
+}
+
+fieldset {
+  padding-bottom: 10px;
+}
+
 .box {
   align-items: center;
   border: 10px solid $black;
   display: grid;
+  font-size: 50px;
   height: 150px;
   justify-content: center;
 }
 
-.one {
+.zero {
   border-left: 0;
+  border-top: 0;
+}
+
+.one {
   border-top: 0;
 }
 
 .two {
+  border-right: 0;
   border-top: 0;
 }
 
 .three {
-  border-right: 0;
-  border-top: 0;
-}
-
-.four {
   border-left: 0;
 }
 
-.six {
+.five {
   border-right: 0;
+}
+
+.six {
+  border-bottom: 0;
+  border-left: 0;
 }
 
 .seven {
   border-bottom: 0;
-  border-left: 0;
 }
 
 .eight {
-  border-bottom: 0;
-}
-
-.nine {
   border-bottom: 0;
   border-right: 0;
 }
