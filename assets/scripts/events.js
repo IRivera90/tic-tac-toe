@@ -55,15 +55,13 @@ const gameBoard = [
 ]
 let currentTurn = 1
 let movesMade = 0
-
 const box = $('.box')
+const reset = $('.reset')
 
 box.on('click', function () {
   // if space is available then run this code
   if (event.target.innerHTML === '') {
     movesMade++
-    console.log('clicked')
-    console.log(movesMade)
 
     if (currentTurn === 1) {
       event.target.innerHTML = player1
@@ -88,35 +86,42 @@ function checkForWinner () {
     // top row win
     if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2]) {
       $('#message').text(gameBoard[0] + ' wins!')
-    }
-    else if (gameBoard[3] !== '' && gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5]) {
+    } else if (gameBoard[3] !== '' && gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5]) {
       $('#message').text(gameBoard[3] + ' wins!')
-    }
-    else if (gameBoard[6] !== '' && gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8]) {
+    } else if (gameBoard[6] !== '' && gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8]) {
       $('#message').text(gameBoard[6] + ' wins!')
-    }
-    else if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) {
+    } else if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) {
       $('#message').text(gameBoard[0] + ' wins!')
-    }
-    else if (gameBoard[1] !== '' && gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7]) {
+    } else if (gameBoard[1] !== '' && gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7]) {
       $('#message').text(gameBoard[1] + ' wins!')
-    }
-    else if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8]) {
+    } else if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8]) {
       $('#message').text(gameBoard[2] + ' wins!')
-    }
-    else if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) {
+    } else if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) {
       $('#message').text(gameBoard[0] + ' wins!')
-    }
-    else if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6]) {
+    } else if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6]) {
       $('#message').text(gameBoard[2] + ' wins!')
+    } else if (movesMade > 8) {
+      $('#message').text('Draw!')
     }
   }
 }
+
+reset.on('click', function () {
+  const moves = Array.prototype.slice.call($('.box'))
+  moves.map((m) => {
+    m.innerHTML = ''
+  })
+  box.html('')
+  currentTurn = 1
+  movesMade = 0
+})
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-passwords').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
+  $('.reset').on('click', reset)
 }
 
 module.exports = {
