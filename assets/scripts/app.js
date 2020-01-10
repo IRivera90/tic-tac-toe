@@ -10,6 +10,6 @@ $(() => {
   // your JS code goes here
   $('#change-passwords').hide()
   $('#sign-out').hide()
-  $('.container').hide()
+  // $('.container').hide()
   authEvents.addHandlers()
 })
