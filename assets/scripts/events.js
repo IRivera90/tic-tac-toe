@@ -56,7 +56,6 @@ const gameBoard = [
 let currentTurn = 1
 let movesMade = 0
 const box = $('.box')
-const reset = $('.reset')
 
 box.on('click', function () {
   // if space is available then run this code
@@ -106,7 +105,7 @@ function checkForWinner () {
   }
 }
 
-reset.on('click', function () {
+const reset = function () {
   const moves = Array.prototype.slice.call($('.box'))
   moves.map((m) => {
     m.innerHTML = ''
@@ -114,7 +113,7 @@ reset.on('click', function () {
   box.html('')
   currentTurn = 1
   movesMade = 0
-})
+}
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
