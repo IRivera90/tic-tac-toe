@@ -11,5 +11,6 @@ $(() => {
   $('#change-passwords').hide()
   $('#sign-out').hide()
   $('.container').hide()
+  $('.reset').hide()
   authEvents.addHandlers()
 })

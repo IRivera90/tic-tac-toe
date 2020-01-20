@@ -16,6 +16,48 @@ const signIn = function (data) {
     data: data
   })
 }
+
+const createGame = data => {
+  return $.ajax({
+    url: 'https://tic-tac-toe-wdi.herokuapp.com/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  }).then((theNewGame) => {
+    store.currentGameID = theNewGame.game.id
+  })
+}
+
+const updateGame = function (gameUpdateData) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.currentGameID,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: gameUpdateData.index,
+          value: gameUpdateData.value
+        },
+        over: gameUpdateData.over
+      }
+    }
+  }).then(console.log)
+}
+
+const getGameStats = function () {
+  return $.ajax({
+    url: 'https://tic-tac-toe-wdi.herokuapp.com/games/:id',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const changePassword = function (data) {
   return $.ajax({
     url: config.apiUrl + '/change-password',
@@ -39,5 +81,8 @@ module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  createGame,
+  updateGame,
+  getGameStats
 }

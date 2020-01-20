@@ -57,7 +57,7 @@ let currentTurn = 1
 let movesMade = 0
 const box = $('.box')
 
-box.on('click', function () {
+box.on('click', function (event) {
   // if space is available then run this code
   if (event.target.innerHTML === '') {
     movesMade++
@@ -73,6 +73,13 @@ box.on('click', function () {
       event.target.style.color = 'blue'
       currentTurn--
     }
+
+    const maybeWinner = checkForWinner()
+    api.updateGame({
+      index: event.target.id,
+      value: currentTurn === 1 ? 'X' : 'O',
+      over: maybeWinner === 'X' || maybeWinner === 'O' || maybeWinner === 'Draw!'
+    })
     checkForWinner()
   // else tell them iillegal move
   } else {

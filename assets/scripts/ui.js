@@ -16,6 +16,10 @@ const signInSuccess = function (response) {
   $('#sign-in').hide()
   $('#change-passwords').show()
   $('#sign-out').show()
+  $('.reset').show()
+
+  // TODO: make a new game
+  // ONLY DO this after we make a new game
   $('.container').show()
 }
 const signInFailure = function (error) {
@@ -30,11 +34,18 @@ const changePasswordFailure = function () {
 }
 const signOutSuccess = function () {
   $('#message').text('Signed out')
+  $('#sign-in').trigger('reset')
+  $('#sign-up').trigger('reset')
   $('#sign-up').show()
   $('#sign-in').show()
   $('#change-passwords').hide()
   $('#sign-out').hide()
   $('.container').hide()
+  $('.reset').hide()
+}
+
+const onReset = function (response) {
+  $('#message').hide()
 }
 module.exports = {
   signUpSuccess,
@@ -43,5 +54,6 @@ module.exports = {
   signInFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  signOutSuccess
+  signOutSuccess,
+  onReset
 }
